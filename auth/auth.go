@@ -45,10 +45,12 @@ func (s *SimpleAuth) Login(username, password string) (*Token, error) {
 func (s *SimpleAuth) Refresh(refreshToken string) (*Token, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	for _, t := range s.tokens {
+	for k, t := range s.tokens {
 		if t.RefreshToken == refreshToken {
+			delete(s.tokens, k)
 			t.AccessToken = t.AccessToken + "_new"
 			t.ExpiresAt = time.Now().Add(time.Hour)
+			s.tokens[t.AccessToken] = t
 			return t, nil
 		}
 	}

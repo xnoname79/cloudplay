@@ -18,6 +18,10 @@ The server listens on the port specified by the `PORT` environment variable (def
 
 - `/` – returns **Hello, world!**
 - `/health` – returns a JSON health status
-- `/session/start` – placeholder for starting a PS2 game session
+- `/login` – obtain an access and refresh token
+- `/refresh` – refresh an access token using a refresh token
+- `/session/start` – start a new game session
+- `/session/stop` – stop a running session
+- `/session/get?id=ID` – retrieve session metadata
 
 These endpoints will expand as the project grows toward streaming PS2 games through the cloud.
