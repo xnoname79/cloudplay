@@ -25,3 +25,8 @@ The server listens on the port specified by the `PORT` environment variable (def
 - `/session/get?id=ID` – retrieve session metadata
 
 These endpoints will expand as the project grows toward streaming PS2 games through the cloud.
+
+## Video Module
+
+The `video` package now includes an extensible backend interface to hook up a PS2 emulator. `PCSX2Backend` launches a PCSX2 process, while `DummyBackend` is used for tests. Frame capture for PCSX2 is not yet implemented, but the interface provides the foundation for integrating real emulator output.
+
